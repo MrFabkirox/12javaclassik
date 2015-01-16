@@ -5,11 +5,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Random rand = new Random();
+		//Random rand = new Random();
+		//System.out.println(rand.nextInt(10));
 		
-		System.out.println(rand.nextInt(10));
+		//Questions q = new Questions();
 		
-		Questions q = new Questions();
+		//Test1 t = new Test1();
+		
+		Question2siimpleArray q = new Question2siimpleArray();
 
 	}
 

@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -17,7 +18,12 @@ public class Questions {
 	
 	char reponseUser; 
 	
+	String [][] questionReponses = new String[2][4];
+	
 	public Questions() {
+		
+		String[] questionTab = new String[2];
+		String[] reponseTab = new String[4];
 		
 		// Creation Question 1
 		System.out.println("Entrez la premiere question" + "\n");
@@ -27,6 +33,10 @@ public class Questions {
 		System.out.println("Entrez la deuxieme reponse possible de la question 1" + "\n");
 		question1reponse2 = sc.nextLine();
 		
+		questionTab[0] = question1;
+		reponseTab[0] = question1reponse1;
+		reponseTab[1] = question1reponse2;
+		
 		// Creation Question 2
 		System.out.println("Entrez la deuxieme question" + "\n");
 		question2 = sc.nextLine();
@@ -35,41 +45,48 @@ public class Questions {
 		System.out.println("Entrez la deuxieme reponse possible de la question 2" + "\n");
 		question2reponse2 = sc.nextLine();
 		
-		String [][] questionReponses = {{question1, question2},{question1reponse1, question1reponse2}, {question2reponse1, question2reponse2}};
+		questionTab[1] = question2;
+		reponseTab[2] = question2reponse1;
+		reponseTab[3] = question2reponse2;
 		
-		// Test		
-		System.out.println("Entrez le numero de la reponse apres chaque question:" + "\n");
 		
-		// Question 1
-		System.out.println("question 0");
-		System.out.println(questionReponses[0][0]);
-		System.out.println("0: " + questionReponses[1][0] + ", " + "1: " + questionReponses[1][1] + "\n");
+		int i = 0;
+		int j = 0;
 		
-		System.out.println("tape 0 or 1 for answer");
-		reponseUser = sc.next().charAt(0);
-		System.out.println("Vous avez repondu " + reponseUser +"\n");
-		
-		if(reponseUser == '0') {
-			System.out.println("bonne reponse" + "\n");
-		} else {
-			System.out.println("mauvaise reponse" + "\n");
+		for(i=0;i<questionReponses.length;i++){
+			for(j=0;j<questionReponses[i].length;j++){
+				
+				if (i == 1) {
+					questionReponses[i][j] = reponseTab[j];
+				} else {
+					questionReponses[i][j] = questionTab[i];
+				}
+				
+			}
 		}
 		
-		// Question 2
-		System.out.println("question 1");
-		System.out.println(questionReponses[0][1]);
-		System.out.println("0: " + questionReponses[2][0] + ", " + "1: " + questionReponses[2][1] + "\n");
+		displayTest(questionReponses);
 		
-		System.out.println("tape 0 or 1 for answer");
-		reponseUser = sc.next().charAt(0);
-		System.out.println("Vous avez repondu " + reponseUser +"\n");
-		
-		if(reponseUser == '0') {
-			System.out.println("bonne reponse" + "\n");
-		} else {
-			System.out.println("mauvaise reponse" + "\n");
+		for(int z=0;z<questionReponses.length;z++) {
+			Arrays.fill(questionReponses[z], z);
 		}
 		
+		displayTest(questionReponses);
 		
+		String[][] tabTest = {{"a", "b", "c"},{"1", "2", "3"}};
+		displayTest(tabTest);
+		
+	}
+
+	private void displayTest(String[][] tab) {
+		
+		for(int i=0;i<tab.length;i++) {
+			System.out.println(Arrays.toString(tab[i]));
+			
+			for(int j=0;j<tab[i].length;j++) {
+				System.out.println(tab[i][j]);
+
+			}
+		}
 	}
 }
